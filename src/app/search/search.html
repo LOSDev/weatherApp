@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <search-box></search-box>
+    <br>
+
+    <div class="panel panel-info" ng-show="vm.channel">
+      <div class="panel-heading">
+        <h3>{{vm.channel.location.city}}
+          <small> ({{vm.channel.location.country}},{{vm.channel.location.region}})</small>
+          <span class="pull-right"><a ng-href="#/weather/{{vm.channel.location.city}}" class="btn btn-warning">Details</a></span>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <img ng-src="{{vm.channel.image.url}}" alt="" />
+        <h4 ng-if="vm.fahrenheit == 'F'">{{vm.channel.item.condition.temp}}&#8457;, {{vm.channel.item.condition.text}}</h4>
+        <h4 ng-if="vm.fahrenheit == 'C'">{{vm.convert(vm.channel.item.condition.temp)}}&#8451;, {{vm.channel.item.condition.text}}</h4>
+        <div class="">
+          Wind: {{vm.channel.wind.speed}} {{vm.channel.units.speed}},
+          Humidity: {{vm.channel.atmosphere.humidity}}%
+        </div>
+        <div class="">
+          Geolocation: [{{vm.channel.item.lat}}, {{vm.channel.item.long}}]
+        </div>
+      </div>
+      <div class="panel-footer">
+        <degree-selector unit="vm.fahrenheit"></degree-selector>
+      </div>
+    </div>
+  </div>
+</div>

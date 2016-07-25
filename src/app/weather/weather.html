@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h2>{{vm.channel.location.city}} ({{vm.channel.location.country}}, {{vm.channel.location.region}})</h2>
+</div>
+<h4 ng-if="vm.fahrenheit=='F'">
+  {{vm.channel.item.condition.temp}} &#8457;
+  <a ng-href="#/forecast/{{vm.channel.location.city}}" class="btn btn-info btn-lg pull-right">Show 10 day forecast</a>
+</h4>
+<h4 ng-if="vm.fahrenheit=='C'">
+  {{vm.convert(vm.channel.item.condition.temp)}} &#8451;
+  <a ng-href="#/forecast/{{vm.channel.location.city}}" class="btn btn-info btn-lg pull-right">Show 10 day forecast</a>
+</h4>
+<h4>{{vm.channel.item.condition.text}}</h4>
+<h5>{{vm.channel.item.condition.date}}</h5>
+
+<table class="table table-striped">
+  <tr><td>Wind:</td><td>{{vm.channel.wind.speed}} {{vm.channel.units.speed}}</td></tr>
+  <tr><td>Humidity:</td><td>{{vm.channel.atmosphere.humidity}} %</td></tr>
+  <tr><td>Pressure:</td><td>{{vm.channel.atmosphere.pressure}} {{vm.channel.units.pressure}}</td></tr>
+  <tr><td>Sunrise:</td><td>{{vm.channel.astronomy.sunrise}}</td></tr>
+  <tr><td>Sunset:</td><td>{{vm.channel.astronomy.sunset}}</td></tr>
+  <tr><td>Geo Coords:</td><td>[{{vm.channel.item.lat}}, {{vm.channel.item.long}}]</td></tr>
+</table>
+<degree-selector unit="vm.fahrenheit"></degree-selector>
+
+<a ng-href="#/search" class=" btn btn-default btn-lg">Back to Search</a>
