@@ -11,6 +11,8 @@ function SearchController($scope, Weather, localStorageService) {
     return Weather.convertToCelcius(val)
   }
   $scope.$on('search', function(event, data) {
+    vm.channel = null;
+    vm.error = null;
     getWeather(data.str)
   })
   function getWeather(str) {
